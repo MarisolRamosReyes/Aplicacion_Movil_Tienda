@@ -1,12 +1,78 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TIenda_Movil_Fin.HomePage"
-             Title="HomePage">
+             Title="HomePage"
+             Shell.NavBarIsVisible="False">
 
-    <StackLayout Padding="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+    <StackLayout Padding="20" Spacing="15" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+        <!-- Encabezado -->
+        <Image Source="images/ambar_logo.png" 
+           HeightRequest="75" 
+           HorizontalOptions="Center"
+           />
+
+        <!-- Mensaje principal -->
         <Label Text="¡Bienvenido a la página principal!" 
-               FontSize="Large" 
-               HorizontalOptions="Center" />
+           FontSize="24" 
+           TextColor="White"
+           FontAttributes="Bold"
+           HorizontalTextAlignment="Center"
+           VerticalTextAlignment="Center"
+           Padding="15"
+            />
+
+        <!-- Espaciado -->
+        <BoxView HeightRequest="2" />
+
+        <!-- Botones con diseño consistente -->
+        <Frame BackgroundColor="Transparent" BorderColor="#ef5350" CornerRadius="30" Padding="0" HorizontalOptions="FillAndExpand" Margin="10,0">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Frame BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                    <Image Source="images/cart.png" Aspect="AspectFill" HeightRequest="25" WidthRequest="25"/>
+                </Frame>
+                <Button Text="Productos" 
+                    BackgroundColor="#ef5350" 
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="30"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="OnContactPageButtonClicked" />
+            </StackLayout>
+        </Frame>
+
+        <Frame BackgroundColor="Transparent" BorderColor="#ef5350" CornerRadius="30" Padding="0" HorizontalOptions="FillAndExpand" Margin="10,20,10,0">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Frame BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                    <Image Source="images/solicitar_credito.png" Aspect="AspectFill" HeightRequest="25" WidthRequest="25" />
+                </Frame>
+                <Button Text="Solicitar Crédito" 
+                    BackgroundColor="#ef5350" 
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="30"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="OnAboutPageButtonClicked" />
+            </StackLayout>
+        </Frame>
+        <Image Source="images/plugin.png" 
+           HeightRequest="50" 
+           WidthRequest="50" 
+           HorizontalOptions="Center"
+           VerticalOptions="End"
+           Margin="0,20,0,0">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnLogoutButtonClicked" />
+            </Image.GestureRecognizers>
+        </Image>
+
+        <!-- Pie de página -->
+        <Label Text="Desarrollado por Tecsitos" 
+           FontSize="14" 
+           HorizontalTextAlignment="Center"
+           TextColor="DarkGray" 
+           Margin="0,20,0,0" />
     </StackLayout>
+
+
 </ContentPage>
