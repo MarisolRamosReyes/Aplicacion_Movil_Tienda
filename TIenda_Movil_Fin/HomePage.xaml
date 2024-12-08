@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TIenda_Movil_Fin.HomePage"
+             Title="HomePage">
+
+    <StackLayout Padding="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <Label Text="¡Bienvenido a la página principal!" 
+               FontSize="Large" 
+               HorizontalOptions="Center" />
+    </StackLayout>
+</ContentPage>

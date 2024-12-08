@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TIenda_Movil_Fin.LoginPage"
+             Title="LoginPage"
+             Shell.NavBarIsVisible="False">
+    
+    <Grid BackgroundColor="#1E1E1E">
+
+        <!-- Imagen como fondo -->
+        <Image Source="images/curva3.svg"
+        Grid.Row="1"
+        Aspect="AspectFill"
+        HorizontalOptions="Fill"
+        VerticalOptions="Fill"
+        Margin="0,0,0,80"     />
+
+        <!-- Contenido principal -->
+        <StackLayout Grid.Row="1">
+            <Frame BackgroundColor="#ef5350" HeightRequest="60" WidthRequest="60" CornerRadius="30" Padding="0" Margin="0,100,0,0" HorizontalOptions="Center">
+                <Image Source="images/user.png" Aspect="AspectFill" Margin="0"/>
+            </Frame>
+        </StackLayout>
+
+
+        <Grid RowSpacing="5" Grid.Row="1" Margin="20,200,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="1" Text="Bienvenido!" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" Padding="0" Margin="0"/>
+            <Label Grid.Row="2" Text="Inicia sesión para continuar" HorizontalOptions="Center" FontSize="Subtitle"/>
+
+            <StackLayout Grid.Row="3" Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="10,0">
+                <Frame Background="Transparent" BorderColor="#ef5350" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Frame Background="Transparent" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                            <Image Source="images/person2.png" Aspect="AspectFill" Margin="0"/>
+                        </Frame>
+                        <!-- Campo de entrada para el usuario -->
+                        <Entry x:Name="UserNameEntry" Placeholder="Usuario" TextColor="White" FontAttributes="Bold" 
+               VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0" />
+                    </StackLayout>
+                </Frame>
+                <Frame Background="Transparent" BorderColor="#ef5350" Padding="0" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Frame Background="Transparent" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                            <Image Source="images/candado.png" Aspect="AspectFill" Margin="0"/>
+                        </Frame>
+                        <!-- Campo de entrada para la contraseña -->
+                        <Entry x:Name="PasswordEntry" Placeholder="Contraseña" IsPassword="True" TextColor="White" FontAttributes="Bold" 
+               VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0" />
+                    </StackLayout>
+                </Frame>
+
+
+                <StackLayout Orientation="Horizontal" Margin="0,10,0,0" Padding="0">
+                    <!--<CheckBox IsChecked="False"/>-->
+                    <!--<Label Text="Recordar contraseña" TextColor="DarkGrey" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>-->
+                </StackLayout>
+
+                <Button Text="Iniciar sesión" Background="#ef5350" TextColor="Black" FontAttributes="Bold" CornerRadius="30" WidthRequest="200" Margin="0,15,0,0" Clicked="OnLoginButtonClicked"/>
+                <!--<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,60,0,0" Padding="0">
+                    <Label Text="¿Aun no tienes cuenta? " TextColor="DarkGray" FontSize="Small"/>
+                    <Label Text="Registrate" TextColor="#ef5350" FontAttributes="Bold" FontSize="Small"/>
+                </StackLayout>-->
+
+            </StackLayout>
+
+
+        </Grid>
+    </Grid>
+</ContentPage>
