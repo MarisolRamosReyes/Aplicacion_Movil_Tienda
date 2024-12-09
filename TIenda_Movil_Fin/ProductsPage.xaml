@@ -32,9 +32,9 @@
         <Frame BackgroundColor="Transparent" BorderColor="#ef5350" CornerRadius="30" Padding="0" HorizontalOptions="FillAndExpand" Margin="10,8">
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                 <Frame BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
-                    <Image Source="images/cart.png" Aspect="AspectFill" HeightRequest="25" WidthRequest="25"/>
+                    <Image Source="images/addcart.png" Aspect="AspectFill" HeightRequest="25" WidthRequest="25"/>
                 </Frame>
-                <Button Text="Carrito" 
+                <Button x:Name="CartButton" Text="Carrito" 
                     BackgroundColor="#ef5350" 
                     TextColor="White"
                     FontAttributes="Bold"

@@ -22,6 +22,7 @@ public partial class ProductsPage : ContentPage
         }
         else
             ProductsListView.ItemsSource = products;
+        UpdateCartButton();
     }
 
     private void OnAddToCartClicked(object sender, EventArgs e)
@@ -36,5 +37,17 @@ public partial class ProductsPage : ContentPage
     private async void OnCartButtonClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new CartPage(_productService));
+    }
+
+    private void UpdateCartButton()
+    {
+        var cartCount = _productService.CartCount;
+        var cartButton = this.FindByName<Button>("CartButton");
+        cartButton.Text = cartCount > 0 ? $"Carrito ({cartCount})" : "Carrito";
+    }
+
+    protected override void OnAppearing()
+    {
+        Refresh();
     }
 }

@@ -5,18 +5,26 @@ namespace TIenda_Movil_Fin;
 public partial class CartPage : ContentPage
 {
     private readonly ProductService _productService;
+    public decimal TotalPriece = 0;
 
     public CartPage(ProductService productService)
     {
         InitializeComponent();
         _productService = productService;
         CartListView.ItemsSource = _productService.GetCartItems();
+        UpdateTotalLabel();
+    }
+
+    private void UpdateTotalLabel()
+    {
+        var totalPrice = _productService.TotalPrice;
+        var totalLabel = this.FindByName<Label>("TotalLabel");
+        totalLabel.Text = $"Total: ${totalPrice}";
     }
 
     private void OnClearCartClicked(object sender, EventArgs e)
     {
         _productService.ClearCart();
-        CartListView.ItemsSource = null;
         DisplayAlert("Carrito", "El carrito se ha vaciado", "OK");
         ReturnedBack();
     }
@@ -28,7 +36,8 @@ public partial class CartPage : ContentPage
 
     private void OnRealizeBuy(object sender, EventArgs e)
     {
-        //Pendiente proceso de venta
+        _productService.ClearCart();
+        DisplayAlert("Carrito", "Compra realizada", "OK");
         ReturnedHome();
     }
 

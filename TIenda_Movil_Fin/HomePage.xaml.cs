@@ -2,16 +2,17 @@ namespace TIenda_Movil_Fin;
 
 public partial class HomePage : ContentPage
 {
+    private readonly ProductService _productService;
+
     public HomePage()
     {
         InitializeComponent();
+        _productService = new ProductService();
     }
 
     private async void OnContactPageButtonClicked(object sender, EventArgs e)
     {
-        var productsPage = new ProductsPage(App.Current!.Handler.MauiContext!.Services.GetService<ProductService>()!);
-        await Navigation.PushAsync(productsPage);
-        //await Navigation.PushAsync(new ContactPage());
+        await Navigation.PushAsync(new ProductsPage(_productService));
     }
 
     private async void OnAboutPageButtonClicked(object sender, EventArgs e)
@@ -23,7 +24,7 @@ public partial class HomePage : ContentPage
         bool confirm = await DisplayAlert("Cerrar Sesión", "¿Estás seguro de que deseas cerrar la sesión?", "Sí", "No");
         if (confirm)
         {
-            await Navigation.PopToRootAsync();
+            Application.Current!.MainPage = new LoginPage();
         }
     }
 

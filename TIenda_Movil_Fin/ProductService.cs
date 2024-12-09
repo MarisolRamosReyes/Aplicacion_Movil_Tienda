@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace TIenda_Movil_Fin
 {
-    public class ProductService
+    public class ProductService : INotifyPropertyChanged
     {
         private List<Product> _products;
-        private List<CartItem> _cart;
+        private ObservableCollection<CartItem> _cart;
 
         public ProductService()
         {
@@ -23,12 +24,13 @@ namespace TIenda_Movil_Fin
                 new Product { Id = 5, Name = "Escritorio", Price = 250, Stock = 8, Image = ImageSource.FromFile("escritorio.jpeg") }
             };
 
-            _cart = new List<CartItem>();
+            _cart = new ObservableCollection<CartItem>();
         }
 
         public List<Product> GetProducts() => _products;
-
-        public List<CartItem> GetCartItems() => _cart;
+        public ObservableCollection<CartItem> GetCartItems() => _cart;
+        public int CartCount => _cart.Sum(c => c.Quantity);
+        public decimal TotalPrice => _cart.Sum(c => c.Quantity * c.Product.Price);
 
         public void AddToCart(Product product, int quantity)
         {
@@ -37,14 +39,13 @@ namespace TIenda_Movil_Fin
                 var existingProduct = _cart.FirstOrDefault(p => p.Product.Id == product.Id);
                 if (existingProduct != null)
                 {
-                    if (product.Stock > 0)
-                        existingProduct.Quantity += quantity;
+                    existingProduct.Quantity += quantity;
                 }
                 else
                 {
                     _cart.Add(new CartItem { Product = product, Quantity = quantity });
                 }
-                product.Stock--;
+                product.Stock -= quantity;
             }
         }
 
@@ -59,7 +60,15 @@ namespace TIenda_Movil_Fin
                 new Product { Id = 5, Name = "Escritorio", Price = 250, Stock = 8, Image = ImageSource.FromFile("escritorio.jpeg") }
             };
 
-            _cart = new List<CartItem>();
+            _cart.Clear();
+            OnPropertyChanged(nameof(CartCount));
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

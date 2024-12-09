@@ -6,6 +6,19 @@
 
     <ContentPage.Content>
         <VerticalStackLayout Padding="10">
+            <Frame BackgroundColor="Transparent" BorderColor="#ef5350" CornerRadius="30" Padding="0" HorizontalOptions="EndAndExpand" Margin="10,8">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Frame BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                        <Image Source="images/empty.png" Aspect="AspectFill" HeightRequest="25" WidthRequest="25"/>
+                    </Frame>
+                    <Button Text="Vaciar Carrito"
+                        Clicked="OnClearCartClicked"
+                        BackgroundColor="Red"
+                        CornerRadius="30"
+                        TextColor="White"
+                        HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+            </Frame>
             <CollectionView x:Name="CartListView">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -17,11 +30,12 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Button Text="Vaciar Carrito"
-                    Clicked="OnClearCartClicked"
+            <Label x:Name="TotalLabel" Text="Total: $0" FontSize="14" HorizontalOptions="Center" />
+            <Button Text="Comprar"
+                    Clicked="OnRealizeBuy"
                     BackgroundColor="Red"
                     TextColor="White"
-                    HorizontalOptions="Center"
+                    HorizontalOptions="Start"
                     Margin="10" />
         </VerticalStackLayout>
     </ContentPage.Content>
