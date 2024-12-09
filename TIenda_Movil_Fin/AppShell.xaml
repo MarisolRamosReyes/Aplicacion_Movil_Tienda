@@ -9,14 +9,23 @@
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:LoginPage}"
+        ContentTemplate="{DataTemplate local:HomePage}"
         FlyoutItemIsVisible="False"
         Shell.FlyoutBehavior="Disabled"
-        Route="LoginPage" />
-    <FlyoutItem Route="HomePage" FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent Title="Home" ContentTemplate="{DataTemplate local:HomePage}"/>
+        Route="HomePage" />
+    <ShellContent
+        Title="Productos"
+        ContentTemplate="{DataTemplate local:ProductsPage}"
+        Route="ProductsPage" />
+    <ShellContent
+        Title="Carrito"
+        ContentTemplate="{DataTemplate local:CartPage}"
+        Route="CartPage" />
+    <!--<FlyoutItem Route="Menu" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Contact" ContentTemplate="{DataTemplate local:ContactPage}"/>
         <ShellContent Title="About" ContentTemplate="{DataTemplate local:AboutPage}"/>
-    </FlyoutItem>
+        <ShellContent Title="Productos" ContentTemplate="{DataTemplate local:ProductsPage}" />
+        <ShellContent Title="Carrito" ContentTemplate="{DataTemplate local:CartPage}" />
+    </FlyoutItem>-->
 </Shell>
 

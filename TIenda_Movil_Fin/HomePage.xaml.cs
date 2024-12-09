@@ -9,7 +9,9 @@ public partial class HomePage : ContentPage
 
     private async void OnContactPageButtonClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new ContactPage());
+        var productsPage = new ProductsPage(App.Current!.Handler.MauiContext!.Services.GetService<ProductService>()!);
+        await Navigation.PushAsync(productsPage);
+        //await Navigation.PushAsync(new ContactPage());
     }
 
     private async void OnAboutPageButtonClicked(object sender, EventArgs e)

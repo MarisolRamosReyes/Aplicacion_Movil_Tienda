@@ -20,7 +20,8 @@ public partial class LoginPage : ContentPage
         {
             UserNameEntry.Text = string.Empty;
             PasswordEntry.Text = string.Empty;
-            await Navigation.PushAsync(new HomePage());
+
+            Application.Current!.MainPage = new AppShell();
         }
         else
         {

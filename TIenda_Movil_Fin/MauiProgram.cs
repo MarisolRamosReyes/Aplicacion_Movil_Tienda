@@ -18,6 +18,9 @@ namespace TIenda_Movil_Fin
             builder.Services.AddSingleton<LoginPage>();
             builder.Services.AddSingleton<ContactPage>();
             builder.Services.AddSingleton<AboutPage>();
+            builder.Services.AddScoped<ProductsPage>();
+            builder.Services.AddScoped<CartPage>();
+            builder.Services.AddSingleton<ProductService>();
 
 #if DEBUG
             builder.Logging.AddDebug();
