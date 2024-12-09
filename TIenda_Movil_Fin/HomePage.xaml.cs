@@ -11,10 +11,15 @@ public partial class HomePage : ContentPage
     {
         await Navigation.PushAsync(new ContactPage());
     }
-
+    private AboutPage _aboutPage;
     private async void OnAboutPageButtonClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new AboutPage());
+        if (_aboutPage == null)
+        {
+            _aboutPage = new AboutPage();
+        }
+
+        await Navigation.PushAsync(_aboutPage);
     }
     private async void OnLogoutButtonClicked(object sender, EventArgs e)
     { 
